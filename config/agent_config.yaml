@@ -1,0 +1,104 @@
+# XCUI Test Case Generator Agent Configuration
+
+# Analysis settings
+analysis:
+  file_extensions:
+    - ".swift"
+  exclude_patterns:
+    - "*Tests.swift"
+    - "*UITests.swift"
+    - "*.generated.swift"
+    - "Pods/**"
+    - "Build/**"
+  
+  # SwiftUI components to analyze
+  components_to_track:
+    - Button
+    - TextField
+    - SecureField
+    - Toggle
+    - Picker
+    - Slider
+    - Stepper
+    - NavigationLink
+    - List
+    - Form
+    - TabView
+    - Alert
+    - Sheet
+    - Text
+    - Image
+
+# Test generation settings
+generation:
+  test_framework: "XCTest"
+  include_setup_teardown: true
+  generate_page_objects: true
+  generate_helper_methods: true
+  
+  # Test naming convention
+  # Options: descriptive, bdd, simple
+  naming_convention: "descriptive"
+  
+  # Test types to generate
+  test_types:
+    - ui_interaction
+    - navigation
+    - validation
+    - accessibility
+    - performance
+  
+  # Accessibility settings
+  accessibility:
+    require_identifiers: true
+    generate_voiceover_tests: true
+    check_contrast_ratios: false
+  
+  # Code style
+  code_style:
+    indent_size: 4
+    use_spaces: true
+    max_line_length: 120
+
+# LLM Configuration
+llm:
+  provider: "openai"  # Options: openai, anthropic
+  model: "gpt-4"
+  temperature: 0.3
+  max_tokens: 4000
+  
+  # Fallback configuration
+  fallback:
+    enabled: true
+    provider: "anthropic"
+    model: "claude-3-sonnet-20240229"
+
+# Output settings
+output:
+  create_separate_files: true
+  file_naming: "{view_name}UITests.swift"
+  include_comments: true
+  include_documentation: true
+  
+  # Directory structure
+  structure:
+    base_path: "UITests"
+    page_objects_path: "PageObjects"
+    helpers_path: "Helpers"
+    resources_path: "Resources"
+
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  file: "logs/agent.log"
+  console: true
+
+# Advanced features
+features:
+  auto_detect_flows: true
+  generate_data_driven_tests: true
+  mock_network_calls: false
+  screenshot_on_failure: true
+  video_recording: false
+
+# Made with Bob
